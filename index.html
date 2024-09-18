@@ -326,8 +326,21 @@
             })
             .then(data => {
                 console.log('Success:', data); // דיבוג
-                // נקה את הטופס
-                document.getElementById('referral-form').reset();
+                // רענן את הטופס
+                const form = document.getElementById('referral-form');
+                const inputs = form.getElementsByTagName('input');
+                const selects = form.getElementsByTagName('select');
+                const textareas = form.getElementsByTagName('textarea');
+                
+                for (let input of inputs) {
+                    input.value = '';
+                }
+                for (let select of selects) {
+                    select.selectedIndex = 0;
+                }
+                for (let textarea of textareas) {
+                    textarea.value = '';
+                }
                 
                 // הצג הודעת הצלחה
                 document.getElementById('success-message').textContent = 'הטופס נשלח בהצלחה';
