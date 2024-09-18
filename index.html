@@ -293,7 +293,7 @@
         </form>
 
         <div id="success-message">
-            תודה רבה! הטופס נשלח בהצלחה.
+            הטופס נשלח בהצלחה
         </div>
     </div>
 
@@ -332,7 +332,12 @@
             })
             .catch((error) => {
                 console.error('Error:', error);
-                alert('אירעה שגיאה בשליחת הטופס. אנא נסי שנית מאוחר יותר.');
+                document.getElementById('success-message').textContent = 'אירעה שגיאה בשליחת הטופס. אנא נסי שנית מאוחר יותר.';
+                document.getElementById('success-message').style.backgroundColor = '#f44336';
+                document.getElementById('success-message').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('success-message').style.display = 'none';
+                }, 5000);
             });
         });
     </script>
