@@ -188,6 +188,16 @@
             background-color: #3a7bd5;
             transform: scale(1.05);
         }
+
+        #success-message {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -282,8 +292,8 @@
             <button type="submit">שליחת המלצה</button>
         </form>
 
-        <div id="success-message" style="display: none; background-color: #4CAF50; color: white; text-align: center; padding: 20px; margin-top: 20px; border-radius: 5px;">
-            תודה רבה! הטופס נשלח בהצלחה. נעדכן אותך בהקדם.
+        <div id="success-message">
+            תודה רבה! הטופס נשלח בהצלחה.
         </div>
     </div>
 
@@ -293,6 +303,9 @@
             
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
+            
+            // הוספת השדה הקבוע "טייפ"
+            data["טייפ"] = "ממליצה";
 
             fetch('https://hook.eu1.make.com/hx4sfcz3w7q9b1d2oa3ahjqcvdm2uda3', {
                 method: 'POST',
@@ -308,8 +321,11 @@
                 return response.json();
             })
             .then(data => {
+                // הצג הודעת הצלחה
                 document.getElementById('success-message').style.display = 'block';
+                // נקה את הטופס
                 document.getElementById('referral-form').reset();
+                // הסתר את הודעת ההצלחה אחרי 5 שניות
                 setTimeout(() => {
                     document.getElementById('success-message').style.display = 'none';
                 }, 5000);
