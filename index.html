@@ -4,8 +4,190 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>צהרוני צהלולים - הביאו חברות לעבודה!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        // ... (השאר את הסגנון הקיים) ...
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f39c12;
+            --background-color: #f0f4f8;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .hero h2 {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .benefit-item {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .explanation {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .cities {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .city {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .city:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #e67e22;
+            transform: scale(1.05);
+        }
+
+        form {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        button[type="submit"] {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3a7bd5;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -38,7 +220,13 @@
         </section>
 
         <section class="cities">
-            // ... (השאר את רשימת הערים הקיימת) ...
+            <div class="city">ראשון לציון</div>
+            <div class="city">פתח תקווה</div>
+            <div class="city">ראש העין</div>
+            <div class="city">חדרה</div>
+            <div class="city">נתניה</div>
+            <div class="city">קרית אתא</div>
+            <div class="city">גני תקווה</div>
         </section>
 
         <section class="cta-buttons">
@@ -69,6 +257,15 @@
                 <input type="tel" id="friendPhone" name="friendPhone" required>
             </div>
             <div class="form-group">
+                <label for="position">לאיזה תפקיד החברה מתאימה?</label>
+                <select id="position" name="position" required>
+                    <option value="">בחרי...</option>
+                    <option value="teacher">גננת</option>
+                    <option value="assistant">סייעת</option>
+                    <option value="both">מתאימה לשני התפקידים</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="relationship">רמת ההיכרות עם החברה</label>
                 <select id="relationship" name="relationship" required>
                     <option value="">בחרי...</option>
@@ -87,7 +284,29 @@
     </div>
 
     <script>
-        // ... (השאר את הסקריפט הקיים, אך שנה את כתובת ה-endpoint אם נדרש) ...
+        document.getElementById('referral-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            fetch('https://hook.eu1.make.com/hx4sfcz3w7q9b1d2oa3ahjqcvdm2uda3', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('ההמלצה נשלחה בהצלחה! תודה על העזרה בגיוס עובדות חדשות.');
+                this.reset();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('אירעה שגיאה בשליחת הטופס. אנא נסי שנית מאוחר יותר.');
+            });
+        });
     </script>
 </body>
 </html>
