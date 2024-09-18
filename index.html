@@ -300,12 +300,15 @@
     <script>
         document.getElementById('referral-form').addEventListener('submit', function(e) {
             e.preventDefault();
+            console.log('Form submitted'); // דיבוג
             
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
             
             // הוספת השדה הקבוע "טייפ"
             data["טייפ"] = "ממליצה";
+
+            console.log('Data to be sent:', data); // דיבוג
 
             fetch('https://hook.eu1.make.com/hx4sfcz3w7q9b1d2oa3ahjqcvdm2uda3', {
                 method: 'POST',
@@ -315,12 +318,14 @@
                 body: JSON.stringify(data),
             })
             .then(response => {
+                console.log('Response status:', response.status); // דיבוג
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
             .then(data => {
+                console.log('Success:', data); // דיבוג
                 // הצג הודעת הצלחה
                 document.getElementById('success-message').style.display = 'block';
                 // נקה את הטופס
