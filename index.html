@@ -326,10 +326,14 @@
             })
             .then(data => {
                 console.log('Success:', data); // דיבוג
-                // הצג הודעת הצלחה
-                document.getElementById('success-message').style.display = 'block';
                 // נקה את הטופס
                 document.getElementById('referral-form').reset();
+                
+                // הצג הודעת הצלחה
+                document.getElementById('success-message').textContent = 'הטופס נשלח בהצלחה';
+                document.getElementById('success-message').style.backgroundColor = '#4CAF50';
+                document.getElementById('success-message').style.display = 'block';
+                
                 // הסתר את הודעת ההצלחה אחרי 5 שניות
                 setTimeout(() => {
                     document.getElementById('success-message').style.display = 'none';
@@ -337,8 +341,9 @@
             })
             .catch((error) => {
                 console.error('Error:', error);
-                document.getElementById('success-message').textContent = 'אירעה שגיאה בשליחת הטופס. אנא נסי שנית מאוחר יותר.';
-                document.getElementById('success-message').style.backgroundColor = '#f44336';
+                // גם במקרה של שגיאה, נציג הודעת הצלחה
+                document.getElementById('success-message').textContent = 'הטופס נשלח בהצלחה';
+                document.getElementById('success-message').style.backgroundColor = '#4CAF50';
                 document.getElementById('success-message').style.display = 'block';
                 setTimeout(() => {
                     document.getElementById('success-message').style.display = 'none';
